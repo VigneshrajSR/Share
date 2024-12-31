@@ -1,12 +1,6 @@
-function greeter(message) {
-    return function (req, res, next) {
-         res.end(message);
-    };
-}
-    var helloWorldGreeter = greeter('Hello world!');
-    var heyThereGreeter = greeter('Hey there!');
-    var connect = require('connect');
-    connect()
-    .use('/hello', helloWorldGreeter)
-    .use('/hey', heyThereGreeter)
-    .listen(3001);
+var express = require('express');
+var serveIndex = require('serve-index');
+var app = express()
+    .use(express.static(__dirname + '/public'))
+    .use(serveIndex(__dirname + '/public'))
+    .listen(3000);
